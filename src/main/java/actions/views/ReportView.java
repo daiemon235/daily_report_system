@@ -52,4 +52,50 @@ public class ReportView {
      * 更新日時
      */
     private LocalDateTime updatedAt;
+
+    /**
+     * いいね
+     */
+    private Integer good;
+
 }
+
+//----------------------------------------------------------------------------------------------------------
+/**
+ * 画像の表示
+*/
+
+// 引用: https://kamifuji.dyndns.org/JSupport/JAVA_Swing/JButton/index.html
+
+/*
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JButton;
+import javax.swing.ImageIcon;
+import java.awt.Container;
+import java.awt.BorderLayout;
+
+class SSample8_1 extends JFrame{
+  public static void main(String args[]){
+    SSample8_1 frame = new SSample8_1("タイトル");
+    frame.setVisible(true);
+  }
+
+  SSample8_1(String title){
+    setTitle(title);
+    setBounds(100, 100, 300, 250);
+    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+    JPanel p = new JPanel();
+
+    ImageIcon icon1 = new ImageIcon(".images/good.png");
+    JButton button1 = new JButton(icon1);
+
+    p.add(button1);
+
+    Container contentPane = getContentPane();
+    contentPane.add(p, BorderLayout.CENTER);
+  }
+}
+
+*/

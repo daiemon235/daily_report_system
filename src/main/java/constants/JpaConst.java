@@ -28,6 +28,8 @@ public interface JpaConst {
     int ROLE_GENERAL = 0; //管理者権限OFF(一般)
     int EMP_DEL_TRUE = 1; //削除フラグON(削除済み)
     int EMP_DEL_FALSE = 0; //削除フラグOFF(現役)
+    int GOOD_TRUE = 1; //いいねフラグON(現役)
+    int GOOD_FALSE = 0; //いいねフラグOFF(削除済み)
 
     //日報テーブル
     String TABLE_REP = "reports"; //テーブル名
@@ -39,6 +41,7 @@ public interface JpaConst {
     String REP_COL_CONTENT = "content"; //日報の内容
     String REP_COL_CREATED_AT = "created_at"; //登録日時
     String REP_COL_UPDATED_AT = "updated_at"; //更新日時
+    String REP_COL_GOOD = "good"; //いいねボタン
 
     //Entity名
     String ENTITY_EMP = "employee"; //従業員

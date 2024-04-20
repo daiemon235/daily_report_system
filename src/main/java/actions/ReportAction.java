@@ -112,6 +112,7 @@ public class ReportAction extends ActionBase {
                     getRequestParam(AttributeConst.REP_TITLE),
                     getRequestParam(AttributeConst.REP_CONTENT),
                     null,
+                    null,
                     null);
 
             //日報情報登録
@@ -208,6 +209,9 @@ public class ReportAction extends ActionBase {
 
             //日報データを更新する
             List<String> errors = service.update(rv);
+
+            //いいねボタンの更新
+            rv.setGood(Integer.parseInt(getRequestParam(AttributeConst.REP_GOOD)));
 
             if (errors.size() > 0) {
                 //更新中にエラーが発生した場合
