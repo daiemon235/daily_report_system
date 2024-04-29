@@ -12,19 +12,7 @@
 
 
 
-<!-- <c:import url="/WEB-INF/views/layout/app.jsp">
-    <c:param name="content">
-        <c:if test="${loginError}">
-            <div id="flush_error">
-                社員番号かパスワードが間違っています。
-            </div>
-        </c:if>
-        <c:if test="${flush != null}">
-            <div id="flush_success">
-                <c:out value="${flush}"></c:out>
-            </div>
-        </c:if>
-        -->
+
 
 
 
@@ -52,7 +40,7 @@
                     <th class="report_name">氏名</th>
                     <th class="report_date">日付</th>
                     <th class="report_title">タイトル</th>
-                    <th class="report_good">いいねボタン</th>
+                    <th class="report_good">いいね!ボタン</th>
                     <th class="report_action">操作</th>
                 </tr>
                 <c:forEach var="report" items="${reports}" varStatus="status">
@@ -62,7 +50,8 @@
                         <td class="report_name"><c:out value="${report.employee.name}" /></td>
                         <td class="report_date"><fmt:formatDate value='${reportDay}' pattern='yyyy-MM-dd' /></td>
                         <td class="report_title">${report.title}</td>
-                        <th class="report_good"><a href="<c:url value='?action=${actRep}&command=${commGood}' />">いいね!</a></th>
+                        <td class="report_good"><a href="<c:url value='?action=${actRep}&command=${commGood}' />">いいね!</a></td>
+
                         <td class="report_action"><a href="<c:url value='?action=${actRep}&command=${commShow}&id=${report.id}' />">詳細を見る</a></td>
                     </tr>
                 </c:forEach>

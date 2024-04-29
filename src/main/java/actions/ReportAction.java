@@ -211,7 +211,7 @@ public class ReportAction extends ActionBase {
             List<String> errors = service.update(rv);
 
             //いいねボタンの更新
-            rv.setGood(Integer.parseInt(getRequestParam(AttributeConst.REP_GOOD)));
+            rv.setGoodFlag(Integer.parseInt(getRequestParam(AttributeConst.REP_GOOD)));
 
             if (errors.size() > 0) {
                 //更新中にエラーが発生した場合
@@ -251,21 +251,29 @@ public class ReportAction extends ActionBase {
         ReportView rv = service.findOne(toNumber(getRequestParam(AttributeConst.REP_GOOD)));
 
       //いいねボタンの更新
-        rv.setGood(Integer.parseInt(getRequestParam(AttributeConst.REP_GOOD)));
+        rv.setGoodFlag(Integer.parseInt(getRequestParam(AttributeConst.REP_GOOD)));
 
         // いいねフラグ0→1の場合
-        if (rv.getRequestParam() == AttributeConst.GOOD_FALSE.getIntegerValue()) {
+        if (rv.getGoodFlag() == AttributeConst.GOOD_FALSE.getIntegerValue()) {
 
 
           //セッションにいいね状態のフラッシュメッセージを設定
             putSessionScope(AttributeConst.FLUSH, MessageConst.I_GOOD.getMessage());
 
+          //一覧画面にリダイレクト
+            redirect(ForwardConst.ACT_REP, ForwardConst.CMD_INDEX);
+
+
         // いいねフラグ1→0の場合
-        }else if (rv.getRequestParam() == AttributeConst.GOOD_TRUE.getIntegerValue()) {
+        }else if (rv.getGoodFlag() == AttributeConst.GOOD_TRUE.getIntegerValue()) {
 
 
           //セッションにいいね解除のフラッシュメッセージを設定
             putSessionScope(AttributeConst.FLUSH, MessageConst.I_GOOD_DELETED.getMessage());
+
+          //一覧画面にリダイレクト
+            redirect(ForwardConst.ACT_REP, ForwardConst.CMD_INDEX);
+
 
 
         }else {
