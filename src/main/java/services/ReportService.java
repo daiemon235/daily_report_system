@@ -154,4 +154,40 @@ public class ReportService extends ServiceBase {
 
     }
 
+    /**
+     *  いいねフラグを立てる
+     * @param good
+     */
+    public void goodflag(Integer id) {
+
+        //idを条件に登録済みの日報情報を取得する
+        ReportView goodflag = findOne(id);
+
+
+        //いいねフラグをたてる
+        goodflag.setGoodFlag(JpaConst.GOOD_TRUE);
+
+        //更新処理を行う
+        update(goodflag);
+
+    }
+
+    /**
+     *  いいねフラグを消す
+     * @param good
+     */
+    public void goodflag_delete(Integer id) {
+
+        //idを条件に登録済みの日報情報を取得する
+        ReportView goodflag_delete = findOne(id);
+
+
+        //いいねフラグを消す
+        goodflag_delete.setGoodFlag(JpaConst.GOOD_FALSE);
+
+        //更新処理を行う
+        update(goodflag_delete);
+
+    }
+
 }

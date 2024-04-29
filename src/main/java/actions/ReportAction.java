@@ -113,7 +113,7 @@ public class ReportAction extends ActionBase {
                     getRequestParam(AttributeConst.REP_CONTENT),
                     null,
                     null,
-                    null);
+                    0);
 
             //日報情報登録
             List<String> errors = service.create(rv);
@@ -232,6 +232,46 @@ public class ReportAction extends ActionBase {
                 redirect(ForwardConst.ACT_REP, ForwardConst.CMD_INDEX);
 
             }
+
+
         }
+    }
+
+    /**
+     * いいねボタン
+     * @throws ServletException
+     * @throws IOException
+     */
+    public void good() throws ServletException, IOException {
+
+        //一覧画面にリダイレクト
+        redirect(ForwardConst.ACT_REP, ForwardConst.CMD_INDEX);
+
+      //いいねフラグを条件に日報データを取得する
+        ReportView rv = service.findOne(toNumber(getRequestParam(AttributeConst.REP_GOOD)));
+
+      //いいねボタンの更新
+        rv.setGood(Integer.parseInt(getRequestParam(AttributeConst.REP_GOOD)));
+
+        // いいねフラグ0→1の場合
+        if (rv.getRequestParam() == AttributeConst.GOOD_FALSE.getIntegerValue()) {
+
+
+          //セッションにいいね状態のフラッシュメッセージを設定
+            putSessionScope(AttributeConst.FLUSH, MessageConst.I_GOOD.getMessage());
+
+        // いいねフラグ1→0の場合
+        }else if (rv.getRequestParam() == AttributeConst.GOOD_TRUE.getIntegerValue()) {
+
+
+          //セッションにいいね解除のフラッシュメッセージを設定
+            putSessionScope(AttributeConst.FLUSH, MessageConst.I_GOOD_DELETED.getMessage());
+
+
+        }else {
+        // 上記2つにも該当しない
+            // 無記入
+        }
+
     }
 }

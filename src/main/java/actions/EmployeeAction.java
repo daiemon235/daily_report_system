@@ -221,9 +221,7 @@ public class EmployeeAction extends ActionBase {
             //従業員情報更新
             List<String> errors = service.update(ev, pepper);
 
-            //いいねON
 
-            //いいねOFF
 
             if (errors.size() > 0) {
                 //更新中にエラーが発生した場合

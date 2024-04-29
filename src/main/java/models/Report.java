@@ -28,16 +28,16 @@ import lombok.Setter;
 @Table(name = JpaConst.TABLE_REP)
 @NamedQueries({
     @NamedQuery(
-            name = JpaConst.Q_REP_GET_ALL,
+            name = JpaConst.Q_REP_GET_ALL,          // 全ての日報をidの降順に取得する
             query = JpaConst.Q_REP_GET_ALL_DEF),
     @NamedQuery(
-            name = JpaConst.Q_REP_COUNT,
+            name = JpaConst.Q_REP_COUNT,            // 日報の件数の取得
             query = JpaConst.Q_REP_COUNT_DEF),
     @NamedQuery(
-            name = JpaConst.Q_REP_GET_ALL_MINE,
+            name = JpaConst.Q_REP_GET_ALL_MINE,     // 指定した従業員が作成した日報を全件idの降順で取得する
             query = JpaConst.Q_REP_GET_ALL_MINE_DEF),
     @NamedQuery(
-            name = JpaConst.Q_REP_COUNT_ALL_MINE,
+            name = JpaConst.Q_REP_COUNT_ALL_MINE,   //指定した従業員が作成した日報の件数を取得する
             query = JpaConst.Q_REP_COUNT_ALL_MINE_DEF)
 })
 

@@ -6,6 +6,7 @@
 <c:set var="actRep" value="${ForwardConst.ACT_REP.getValue()}" />
 <c:set var="commIdx" value="${ForwardConst.CMD_INDEX.getValue()}" />
 <c:set var="commEdt" value="${ForwardConst.CMD_EDIT.getValue()}" />
+<c:set var="commGood" value="${ForwardConst.CMD_GOOD.getValue()}" />
 
 <c:import url="/WEB-INF/views/layout/app.jsp">
     <c:param name="content">
@@ -48,6 +49,9 @@
 
         <p>
             <a href="<c:url value='?action=${actRep}&command=${commIdx}' />">一覧に戻る</a>
+            </p>
+            <p>
+            <a href="<c:url value='?action=${actRep}&command=${commGood}' />">いいね!</a>
         </p>
     </c:param>
 </c:import>

@@ -54,9 +54,9 @@ public class ReportView {
     private LocalDateTime updatedAt;
 
     /**
-     * いいね
+     * いいねフラグ (0=いいねなし、 1=いいねあり)
      */
-    private Integer good;
+    private Integer goodFlag;
 
 }
 
