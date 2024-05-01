@@ -210,8 +210,6 @@ public class ReportAction extends ActionBase {
             //日報データを更新する
             List<String> errors = service.update(rv);
 
-            //いいねボタンの更新
-            rv.setGoodFlag(Integer.parseInt(getRequestParam(AttributeConst.REP_GOOD)));
 
             if (errors.size() > 0) {
                 //更新中にエラーが発生した場合
@@ -244,42 +242,24 @@ public class ReportAction extends ActionBase {
      */
     public void good() throws ServletException, IOException {
 
-        //一覧画面にリダイレクト
-        redirect(ForwardConst.ACT_REP, ForwardConst.CMD_INDEX);
-
-      //いいねフラグを条件に日報データを取得する
-        ReportView rv = service.findOne(toNumber(getRequestParam(AttributeConst.REP_GOOD)));
-
-      //いいねボタンの更新
-        rv.setGoodFlag(Integer.parseInt(getRequestParam(AttributeConst.REP_GOOD)));
+        //IDを条件に日報データを取得する(修正済み)
+        ReportView rv = service.findOne(toNumber(getRequestParam(AttributeConst.REP_ID)));
 
         // いいねフラグ0→1の場合
         if (rv.getGoodFlag() == AttributeConst.GOOD_FALSE.getIntegerValue()) {
+            //いいねボタンの更新
+            rv.setGoodFlag(1);
 
-
-          //セッションにいいね状態のフラッシュメッセージを設定
-            putSessionScope(AttributeConst.FLUSH, MessageConst.I_GOOD.getMessage());
-
-          //一覧画面にリダイレクト
-            redirect(ForwardConst.ACT_REP, ForwardConst.CMD_INDEX);
-
-
-        // いいねフラグ1→0の場合
-        }else if (rv.getGoodFlag() == AttributeConst.GOOD_TRUE.getIntegerValue()) {
-
-
-          //セッションにいいね解除のフラッシュメッセージを設定
-            putSessionScope(AttributeConst.FLUSH, MessageConst.I_GOOD_DELETED.getMessage());
-
-          //一覧画面にリダイレクト
-            redirect(ForwardConst.ACT_REP, ForwardConst.CMD_INDEX);
-
-
-
-        }else {
-        // 上記2つにも該当しない
-            // 無記入
+            // いいねフラグ1→0の場合
+        } else {
+            //いいねボタンの更新
+            rv.setGoodFlag(0);
         }
 
+        //日報データを更新する
+        List<String> errors = service.update(rv);
+
+        //一覧画面にリダイレクト
+        redirect(ForwardConst.ACT_REP, ForwardConst.CMD_INDEX);
     }
 }

@@ -51,7 +51,7 @@
             <a href="<c:url value='?action=${actRep}&command=${commIdx}' />">一覧に戻る</a>
             </p>
             <p>
-            <a href="<c:url value='?action=${actRep}&command=${commGood}' />">いいね!</a>
+            <a href="<c:url value='?action=${actRep}&command=${commGood}&id=${report.id}' />">いいね!</a>
         </p>
     </c:param>
 </c:import>

@@ -10,7 +10,16 @@
 
 <c:import url="/WEB-INF/views/layout/app.jsp">
     <c:param name="content">
-
+        <c:if test="${good}">
+            <div id="good">
+            <c:out value="${flush}"></c:out>
+            </div>
+        </c:if>
+        <c:if test="${good_deleted}">
+            <div id="good_delete">
+            <c:out value="${flush}"></c:out>
+            </div>
+        </c:if>
 
 
 
