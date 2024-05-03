@@ -40,7 +40,7 @@
                                 <c:when test="${report.goodFlag == 1}">
                                      ◯
                                 </c:when>
-                            <c:otherwise>
+                                <c:otherwise>
                                     －
                                 </c:otherwise>
                             </c:choose>
