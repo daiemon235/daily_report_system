@@ -41,7 +41,7 @@
                                      ◯
                                 </c:when>
                             <c:otherwise>
-                                    ー
+                                    －
                                 </c:otherwise>
                             </c:choose>
                         </td>
