@@ -51,7 +51,16 @@
             <a href="<c:url value='?action=${actRep}&command=${commIdx}' />">一覧に戻る</a>
             </p>
             <p>
-            <a href="<c:url value='?action=${actRep}&command=${commGood}&id=${report.id}' />">いいね!</a>
+            <a href="<c:url value='?action=${actRep}&command=${commGood}&id=${report.id}' />">
+                             <c:choose>
+                                <c:when test="${report.goodFlag == 1}">
+                                     いいね!取り消し
+                                </c:when>
+                                <c:otherwise>
+                                    いいね!
+                                </c:otherwise>
+                            </c:choose>
+            </a>
         </p>
     </c:param>
 </c:import>
