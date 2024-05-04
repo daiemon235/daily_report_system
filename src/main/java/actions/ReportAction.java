@@ -250,10 +250,16 @@ public class ReportAction extends ActionBase {
             //いいねボタンの更新
             rv.setGoodFlag(1);
 
+            // フラッシュメッセージ
+            putSessionScope(AttributeConst.FLUSH, MessageConst.I_GOOD.getMessage());
+
         // いいねフラグ1→0の場合
         } else {
             //いいねボタンの更新
             rv.setGoodFlag(0);
+
+            // フラッシュメッセージ
+            putSessionScope(AttributeConst.FLUSH, MessageConst.I_GOOD_DEL.getMessage());
         }
 
         //日報データを更新する
@@ -268,14 +274,11 @@ public class ReportAction extends ActionBase {
 
             //編集画面を再表示
             forward(ForwardConst.FW_REP_EDIT);
-        } else {
-            //更新中にエラーがなかった場合
-
-            //セッションに更新完了のフラッシュメッセージを設定
-            putSessionScope(AttributeConst.FLUSH, MessageConst.I_UPDATED.getMessage());
-
         }
-
+            // } else {
+            //更新中にエラーがなかった場合
+            //省略
+            // }
 
         //一覧画面にリダイレクト
         redirect(ForwardConst.ACT_REP, ForwardConst.CMD_INDEX);
